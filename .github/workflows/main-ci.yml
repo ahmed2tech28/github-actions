@@ -1,0 +1,25 @@
+name: Run index.js
+
+on:
+  push:
+    branches:
+      - main  # Runs when pushing to main
+  pull_request:
+    branches:
+      - main  # Runs when merging PR to main
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Run index.js
+        run: node index.js
